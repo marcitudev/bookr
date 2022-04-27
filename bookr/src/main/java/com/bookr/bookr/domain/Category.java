@@ -1,9 +1,16 @@
 package com.bookr.bookr.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
+import javax.persistence.Entity;
+
+@Entity(name = "category")
+public class Category implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Long id;
     private String name;
     private String description;
