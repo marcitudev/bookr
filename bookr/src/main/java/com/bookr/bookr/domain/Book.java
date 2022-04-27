@@ -29,12 +29,13 @@ public class Book implements Serializable{
         super();
     }
 
-    public Book(Long id, String title, String author, String text) {
+    public Book(Long id, String title, String author, String text, Category category) {
         super();
         this.id = id;
         this.title = title;
         this.author = author;
         this.text = text;
+        this.category = category;
     }
 
     public Long getId() {
@@ -67,6 +68,14 @@ public class Book implements Serializable{
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
