@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "book")
-public class Book implements Serializable{
+public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
