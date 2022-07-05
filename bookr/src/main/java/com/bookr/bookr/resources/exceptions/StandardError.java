@@ -1,4 +1,4 @@
-package com.bookr.bookr.resource.exceptions;
+package com.bookr.bookr.resources.exceptions;
 
 public class StandardError {
     private Long timestamp;

@@ -1,6 +1,6 @@
-package com.bookr.bookr.resource.exceptions;
+package com.bookr.bookr.resources.exceptions;
 
-import com.bookr.bookr.service.exceptions.ObjectNotFoundException;
+import com.bookr.bookr.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

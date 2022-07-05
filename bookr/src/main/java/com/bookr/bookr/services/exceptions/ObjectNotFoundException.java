@@ -1,4 +1,4 @@
-package com.bookr.bookr.service.exceptions;
+package com.bookr.bookr.services.exceptions;
 
 public class ObjectNotFoundException extends RuntimeException{
 

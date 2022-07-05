@@ -1,4 +1,4 @@
-package com.bookr.bookr.domain;
+package com.bookr.bookr.domains;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

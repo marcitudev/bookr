@@ -1,9 +1,9 @@
-package com.bookr.bookr.service;
+package com.bookr.bookr.services;
 
-import com.bookr.bookr.domain.Book;
-import com.bookr.bookr.domain.Category;
-import com.bookr.bookr.repository.BookRepository;
-import com.bookr.bookr.repository.CategoryRepository;
+import com.bookr.bookr.domains.Book;
+import com.bookr.bookr.domains.Category;
+import com.bookr.bookr.repositories.BookRepository;
+import com.bookr.bookr.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

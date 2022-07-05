@@ -1,6 +1,6 @@
 package com.bookr.bookr.config;
 
-import com.bookr.bookr.service.DBService;
+import com.bookr.bookr.services.DBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
