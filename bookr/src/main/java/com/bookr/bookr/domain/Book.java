@@ -21,7 +21,7 @@ public class Book implements Serializable {
     private String title;
     private String author;
     private String text;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
