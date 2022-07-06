@@ -3,6 +3,7 @@ package com.bookr.bookr.services;
 import com.bookr.bookr.DTOs.CategoryDTO;
 import com.bookr.bookr.domains.Category;
 import com.bookr.bookr.repositories.CategoryRepository;
+import com.bookr.bookr.services.exceptions.DataIntegrityViolationException;
 import com.bookr.bookr.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,10 @@ public class CategoryService {
 
     public void delete(Long id) {
         findById(id);
-        repository.deleteById(id);
+        try{
+            repository.deleteById(id);
+        } catch(org.springframework.dao.DataIntegrityViolationException e){
+            throw new DataIntegrityViolationException("Category cannot be deleted as it has associated books");
+        }
     }
 }

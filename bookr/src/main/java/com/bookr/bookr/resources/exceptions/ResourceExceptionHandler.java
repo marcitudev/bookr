@@ -1,5 +1,6 @@
 package com.bookr.bookr.resources.exceptions;
 
+import com.bookr.bookr.services.exceptions.DataIntegrityViolationException;
 import com.bookr.bookr.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,5 +17,12 @@ public class ResourceExceptionHandler {
                                                                  ServletRequest request){
         StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> DataIntegratyViolationException(DataIntegrityViolationException exception,
+                                                                 ServletRequest request){
+        StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }
