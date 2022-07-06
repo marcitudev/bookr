@@ -6,7 +6,9 @@ import com.bookr.bookr.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,5 +29,12 @@ public class CategoryResource {
     public ResponseEntity<List<CategoryDTO>> findAll(){
         List<CategoryDTO> categories = service.findAll();
         return ResponseEntity.ok().body(categories);
+    }
+
+    @PostMapping
+    public ResponseEntity<Category> create(@RequestBody Category category){
+        category = service.create(category);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId()).toUri();
+        return ResponseEntity.created(uri).body(category);
     }
 }

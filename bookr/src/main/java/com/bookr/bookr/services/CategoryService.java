@@ -24,6 +24,10 @@ public class CategoryService {
 
     public List<CategoryDTO> findAll(){
         return repository.findAll().stream().map(value -> new CategoryDTO(value)).collect(Collectors.toList());
+    }
 
+    public Category create(Category category){
+        category.setId(null);
+        return repository.save(category);
     }
 }
