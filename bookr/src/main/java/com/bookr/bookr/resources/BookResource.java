@@ -28,4 +28,11 @@ public class BookResource {
         List<BookDTO> books = Objects.nonNull(category_id) ? service.findAllByCategory(category_id) : service.findAll();
         return ResponseEntity.ok().body(books);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Book> update(@PathVariable Long id,
+                                       @RequestBody Book book){
+        Book bookUpdated = service.update(id, book);
+        return ResponseEntity.ok().body(bookUpdated);
+    }
 }

@@ -33,4 +33,12 @@ public class BookService {
         categoryService.findById(category_id);
         return repository.findAllByCategory(category_id).stream().map(value -> new BookDTO(value)).collect(Collectors.toList());
     }
+
+    public Book update(Long id, Book book) {
+        Book updateBook = this.findById(id);
+        updateBook.setAuthor(book.getAuthor());
+        updateBook.setTitle(book.getTitle());
+        updateBook.setText(book.getText());
+        return repository.save(updateBook);
+    }
 }
