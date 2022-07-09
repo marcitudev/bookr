@@ -6,7 +6,9 @@ import com.bookr.bookr.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,5 +36,12 @@ public class BookResource {
                                        @RequestBody Book book){
         Book bookUpdated = service.update(id, book);
         return ResponseEntity.ok().body(bookUpdated);
+    }
+
+    @PostMapping
+    public ResponseEntity<Book> create(@RequestParam Long category_id, @RequestBody Book book){
+        Book bookCreate = service.create(category_id, book);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/book/{id}").buildAndExpand(book.getId()).toUri();
+        return ResponseEntity.created(uri).body(bookCreate);
     }
 }

@@ -2,6 +2,7 @@ package com.bookr.bookr.services;
 
 import com.bookr.bookr.DTOs.BookDTO;
 import com.bookr.bookr.domains.Book;
+import com.bookr.bookr.domains.Category;
 import com.bookr.bookr.repositories.BookRepository;
 import com.bookr.bookr.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,12 @@ public class BookService {
         updateBook.setTitle(book.getTitle());
         updateBook.setText(book.getText());
         return repository.save(updateBook);
+    }
+
+
+    public Book create(Long category_id, Book book) {
+        Category category = categoryService.findById(category_id);
+        book.setCategory(category);
+        return repository.save(book);
     }
 }
