@@ -6,6 +6,7 @@ import com.bookr.bookr.domains.Category;
 import com.bookr.bookr.repositories.BookRepository;
 import com.bookr.bookr.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,5 +49,10 @@ public class BookService {
         Category category = categoryService.findById(category_id);
         book.setCategory(category);
         return repository.save(book);
+    }
+
+    public void delete(Long id) {
+        findById(id);
+        repository.deleteById(id);
     }
 }

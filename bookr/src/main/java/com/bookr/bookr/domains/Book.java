@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity(name = "book")
 public class Book implements Serializable {
@@ -18,8 +20,17 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Title field required")
+    @Size(min = 3, max = 100, message = "Title field must be between 3 and 100 characters")
     private String title;
+
+    @NotBlank(message = "Author field required")
+    @Size(min = 3, max = 50, message = "Author field must be between 3 and 50 characters")
     private String author;
+
+    @NotBlank(message = "Text field required")
+    @Size(min = 10, max = 2000000, message = "Text field must be between 10 and 2.000.000 characters")
     private String text;
     @JsonIgnore
     @ManyToOne

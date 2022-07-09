@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/book")
 public class BookResource {
@@ -32,16 +34,23 @@ public class BookResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Book> update(@PathVariable Long id,
-                                       @RequestBody Book book){
+    public ResponseEntity<Book> update(@Valid @PathVariable Long id,
+                                       @Valid @RequestBody Book book){
         Book bookUpdated = service.update(id, book);
         return ResponseEntity.ok().body(bookUpdated);
     }
 
     @PostMapping
-    public ResponseEntity<Book> create(@RequestParam Long category_id, @RequestBody Book book){
+    public ResponseEntity<Book> create(@RequestParam Long category_id,
+                                       @Valid @RequestBody Book book){
         Book bookCreate = service.create(category_id, book);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/book/{id}").buildAndExpand(book.getId()).toUri();
         return ResponseEntity.created(uri).body(bookCreate);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable  Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

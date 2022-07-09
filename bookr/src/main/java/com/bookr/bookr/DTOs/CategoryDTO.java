@@ -2,10 +2,19 @@ package com.bookr.bookr.DTOs;
 
 import com.bookr.bookr.domains.Category;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class CategoryDTO {
 
     private Long id;
+
+    @NotBlank(message = "Name field required")
+    @Size(min = 3, max = 100, message = "Name field must be between 3 and 100 characters")
     private String name;
+
+    @NotBlank(message = "Description field required")
+    @Size(min = 3, max = 500, message = "Description field must be between 3 and 500 characters")
     private String description;
 
     public CategoryDTO() {
