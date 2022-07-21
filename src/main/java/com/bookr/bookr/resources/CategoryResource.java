@@ -11,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin("*")
 @RestController
@@ -41,8 +40,8 @@ public class CategoryResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CategoryDTO> update(@Valid @PathVariable Long id,
-                                              @RequestBody CategoryDTO category){
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id,
+                                              @Valid @RequestBody CategoryDTO category){
         Category categoryUpdated = service.update(id, category);
         return ResponseEntity.ok().body(new CategoryDTO(categoryUpdated));
     }
